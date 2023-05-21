@@ -4,10 +4,11 @@ const userModel = require('../model/user.model')
 
 
 
-userRouter.post('/signup', async (req, res) => {
-    const { name, email, phone, profession, password } = req.body;
+userRouter.post('/register', async (req, res) => {
+    console.log(req.body)
+    const { name, email, phoneNumber, profession, password } = req.body;
 
-    if (!name || !email || !phone || !profession || !password) {
+    if (!name || !email || !phoneNumber || !profession || !password) {
         return res.status(400).send('Insufficient Data');
     }
 
@@ -18,7 +19,7 @@ userRouter.post('/signup', async (req, res) => {
             return res.status(409).send('User with this email already exists plss login');
         }
 
-        const new_student = new userModel({ name, email, phone, profession, password });
+        const new_student = new userModel({ name, email, phoneNumber, profession, password });
         const result = await new_student.save();
 
         res.status(201).send(result);
