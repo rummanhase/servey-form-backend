@@ -46,21 +46,24 @@ surveyRouter.post('/survey' , Upload.single("image") , async(req , res)=>{
     }
 });
 
-surveyRouter.get('/surveys' , async(req , res)=>{
+surveyRouter.get('/surveys/:email' , async(req , res)=>{
 console.log("hello")
-    try{
-        let allSurveys = await surveyModel.find()
-        res.status(200).json({
-            status:"Success",
-            result : allSurveys
-        })
-    }
-    catch(err){
-        res.status(400).json({
-        status:"Failed",
-        message: err.message
-    })
-    }
+    const email = req.params.email;
+    console.log(email);
+    // let surveys = await surveyModel.find({ email: email });
+    // try{
+    //     let allSurveys = await surveyModel.find()
+    //     res.status(200).json({
+    //         status:"Success",
+    //         result : surveys
+    //     })
+    // }
+    // catch(err){
+    //     res.status(400).json({
+    //     status:"Failed",
+    //     message: err.message
+    // })
+    // }
 });
 
 surveyRouter.get('/image/:name' , async(req , res) =>{
