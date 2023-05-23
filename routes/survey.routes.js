@@ -46,25 +46,43 @@ surveyRouter.post('/survey' , Upload.single("image") , async(req , res)=>{
     }
 });
 
-surveyRouter.get('/surveys/:email' , async(req , res)=>{
-console.log("hello")
-    const email = req.params.email;
-    console.log(email);
-    // let surveys = await surveyModel.find({ email: email });
-    // try{
-    //     let allSurveys = await surveyModel.find()
-    //     res.status(200).json({
-    //         status:"Success",
-    //         result : surveys
-    //     })
-    // }
-    // catch(err){
-    //     res.status(400).json({
-    //     status:"Failed",
-    //     message: err.message
-    // })
-    // }
+// surveyRouter.get('/surveys/:email' , async(req , res)=>{
+// console.log("hello")
+//     const email = req.params.email;
+//     console.log(email);
+//     // let surveys = await surveyModel.find({ email: email });
+//     // try{
+//     //     let allSurveys = await surveyModel.find()
+//     //     res.status(200).json({
+//     //         status:"Success",
+//     //         result : surveys
+//     //     })
+//     // }
+//     // catch(err){
+//     //     res.status(400).json({
+//     //     status:"Failed",
+//     //     message: err.message
+//     // })
+//     // }
+// });
+
+surveyRouter.get('/surveys/:email', async (req, res) => {
+  const email = req.params.email;
+  try {
+    const surveys = await surveyModel.find({ email: email });
+console.log(surveys);
+    res.status(200).json({
+      status: "Success",
+      result: surveys
+    });
+  } catch (err) {
+    res.status(400).json({
+      status: "Failed",
+      message: err.message
+    });
+  }
 });
+
 
 surveyRouter.get('/image/:name' , async(req , res) =>{
     try{
@@ -111,7 +129,7 @@ surveyRouter.delete('/survey/:_id', async (req, res) => {
 
 surveyRouter.put('/survey/:id', Upload.single("image"), async (req, res) => {
     const surveyId = req.params.id;
-    console.log(req.body);
+    // console.log(req.body);
     try {
       let updatedSurvey = {
         ...req.body,
