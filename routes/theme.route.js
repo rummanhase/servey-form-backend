@@ -16,7 +16,7 @@ themeRouter.get('/themes', async (req, res) => {
   
 
   themeRouter.post('/themes', async (req, res) => {
-    // console.log("hello");
+    console.log(req.body);
     try {
       const {
         email,

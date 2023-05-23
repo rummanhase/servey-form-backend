@@ -1,15 +1,10 @@
 const mongoose = require('mongoose');
 
 const quesSchema = new mongoose.Schema({
-  question: {
-    type: String,
-    required: true
-  },
-  options: {
-    type: [String],
-    required: true,
-    
-  }
+  email: String,
+  surveyId: String,
+  questionText: String,
+  option: Array
 });
 
 const quesModel = mongoose.model('ques', quesSchema);

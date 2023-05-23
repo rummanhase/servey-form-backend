@@ -4,10 +4,10 @@ const surveySchema = new mongoose.Schema({
     email:String,
     name:String,
     description:String,
-    typeofsurvey:String,
+    surveyType:String,
     othercriteria:String,
     image:String,
-    startdate:String,
+    startDate:String,
     endDate:String
 },{
     timestamps:true

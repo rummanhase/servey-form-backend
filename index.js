@@ -19,9 +19,9 @@ app.use(express.urlencoded({extended:false}));
 
 app.use("/" , themeRouter)
 app.use("/" , userRouter)
-// app.use("/" , surveyRouter)
-app.use("/surveys", surveyRouter);
-
+app.use("/" , surveyRouter)
+// app.use("/surveys", surveyRouter);
+  
 app.use("/" , quesRouter)
 app.get('/' , (req , res)=>{
     res.send("hello")
