@@ -109,11 +109,12 @@ surveyRouter.get('/image/:name' , async(req , res) =>{
 });
 
 surveyRouter.delete('/survey/:_id', async (req, res) => {
+  const {email} =  req.body;
     try {
         const surveyId = req.params._id;
         await surveyModel.findByIdAndDelete(surveyId);
         
-        let allSurveys = await surveyModel.find();
+        let allSurveys = await surveyModel.find({email:email});
         
         res.status(200).json({
             status: "Success",
